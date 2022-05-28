@@ -1,15 +1,6 @@
-# Week - NULL
-```Hafta veya Ödev Sayısı (NULL değiştir)```
-
-# Homework 
-```Ödev```
+# 6. Hafta React 2. Ders Ödevi
 
 
-## Homework Description
-
-```Ödev Açıklaması ```
 
 
-## Author
-
-```Ödevi yapan```
+## 👩‍💻 Büşra Akay
