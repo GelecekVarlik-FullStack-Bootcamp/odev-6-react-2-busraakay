@@ -1,6 +1,7 @@
 import React from 'react'
 import { InputGroup, FormControl, Row, Col, Button, ListGroup, Modal } from 'react-bootstrap';
 import { useState } from 'react';
+import { getCategory, getStatusList } from '../services/todo/endpoint';
 function Category() {
 
     const [show, setShow] = useState(false);
@@ -8,8 +9,25 @@ function Category() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [categories, setCategories] = useState([])
+    const [statu, setStatu] = useState([])
+
+    getCategoryList().then((res) => {
+        setCategories(
+            res.data
+        )
+    })
+
+    getStatusList().then((res) => {
+        setStatus(
+            res.data
+        )
+    })
+
     return (
-        <div>
+        <div>{
+            categories.map((category,) =>
+            <div>
             <Row>
                 <Col>
                     <InputGroup className="mb-3">
@@ -28,19 +46,15 @@ function Category() {
             <Row>
                 <ListGroup>
                     <ListGroup.Item variant="primary">
-                        <InputGroup className="mb-3">
-
-                            <FormControl
-                                aria-label="Default"
-                                aria-describedby="inputGroup-sizing-default"
-                            />
-                        </InputGroup>
+                    <Form.Label column sm="2">
+                        {category.title}
+                    </Form.Label>
                         <Button onClick={handleShow}>Durumları Gör</Button>
                         <Button>Güncelle</Button>
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Dialog>
                                 <Modal.Header closeButton>
-                                    <Modal.Title>Kategori 1 - </Modal.Title>
+                                    <Modal.Title>{category.title} </Modal.Title>
                                     <Modal.Title>Durum</Modal.Title>
                                 </Modal.Header>
 
@@ -98,6 +112,11 @@ function Category() {
                 </ListGroup>
             </Row>
         </div>
+            )
+        }
+
+        </div>
+        
     )
 }
 

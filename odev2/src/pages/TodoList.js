@@ -6,20 +6,19 @@ import Todo from '../componenets/Todo';
 function TodoList() {
     const [isShown, setIsShown] = useState(false);
 
-    const handleClick = event => {
-      // 👇️ toggle shown state
-      setIsShown(current => !current);
-  
-      // 👇️ or simply set it to true
-      // setIsShown(true);
+    const handleClickTodo = event => {
+      setIsShown(true);
     };  
+    const handleClickCategory = event => {
+      setIsShown(false);
+    }; 
 
     
 
   return (
     <div>
-      <Button onClick={handleClick}>Todolar</Button>
-      <Button onClick={handleClick}>Kategoriler</Button>
+      <Button onClick={handleClickTodo}>Todolar</Button>
+      <Button onClick={handleClickCategory}>Kategoriler</Button>
       
 
       {isShown && <Todo />}
